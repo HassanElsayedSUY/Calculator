@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator By Hassan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode"> <div class="container">
+        <h1 class="main-title">Calculator By Hassan</h1> <div class="calculator">
+            <div class="header">
+                <button id="history-toggle" class="icon-button" aria-label="Toggle History">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </button>
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle Theme">
+                    <svg class="feather feather-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="feather feather-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+            <div class="display">
+                <div class="calculation-line" data-calculation-line></div>
+                <div class="current-operand" data-current-operand>0</div>
+            </div>
+            <div class="buttons">
+                <button data-all-clear class="operator-btn">AC</button>
+                <button data-parenthesis="(" class="operator-btn">(</button>
+                <button data-parenthesis=")" class="operator-btn">)</button>
+                <button data-operation="÷" class="operator-btn">÷</button>
+
+                <button data-number>7</button> <button data-number>8</button> <button data-number>9</button>
+                <button data-operation="*" class="operator-btn">*</button>
+
+                <button data-number>4</button> <button data-number>5</button> <button data-number>6</button>
+                <button data-operation="-" class="operator-btn">-</button>
+
+                <button data-number>1</button> <button data-number>2</button> <button data-number>3</button>
+                <button data-operation="+" class="operator-btn">+</button>
+
+                <button data-number>0</button>
+                <button data-number>.</button>
+                <button data-delete class="operator-btn">DEL</button>
+                <button data-equals class="equals-btn span-one">=</button>
+            </div>
+        </div>
+
+        <div class="history-panel-wrapper" id="history-panel-wrapper">
+            <div class="history-panel">
+                <div class="history-header">
+                    <h3>History</h3>
+                    <button id="clear-history-button" aria-label="Clear History">Clear All</button>
+                </div>
+                <ul id="history-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

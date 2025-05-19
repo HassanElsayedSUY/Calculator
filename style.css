@@ -1,0 +1,416 @@
+:root {
+    --font-family: 'Roboto', sans-serif;
+
+    /* Light Theme Variables */
+    --bg-light: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
+    --text-light: #1c1c1e;
+    --title-text-light: #2c3e50; /* Color for main title in light mode */
+    --calculator-bg-light: rgba(255, 255, 255, 0.65);
+    --calculator-border-light: rgba(255, 255, 255, 0.3);
+    --button-bg-light: rgba(240, 240, 245, 0.8);
+    --button-hover-bg-light: rgba(220, 220, 225, 0.9);
+    --operator-bg-light: rgba(255, 193, 7, 0.85);
+    --operator-text-light: #1c1c1e;
+    --operator-hover-bg-light: rgba(255, 179, 0, 0.9);
+    --equals-bg-light: rgba(0, 123, 255, 0.85);
+    --equals-text-light: #ffffff;
+    --equals-hover-bg-light: rgba(0, 105, 217, 0.9);
+    --display-bg-light: rgba(248, 249, 250, 0.7);
+    --display-border-light: rgba(222, 226, 230, 0.7);
+    --shadow-light: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    --history-bg-light: rgba(255, 255, 255, 0.7);
+    --history-text-light: #333;
+    --history-item-hover-light: rgba(200, 200, 205, 0.8);
+    --icon-color-light: #212529;
+    --history-button-hover-light: rgba(0,0,0,0.07);
+    --danger-bg-light: rgba(220, 53, 69, 0.7);
+    --danger-hover-bg-light: rgba(200, 33, 49, 0.8);
+    --danger-text-light: #ffffff;
+
+
+    /* Dark Theme Variables */
+    --bg-dark: linear-gradient(135deg, #232526 0%, #414345 100%);
+    --text-dark: #f0f0f0;
+    --title-text-dark: #ecf0f1; /* Color for main title in dark mode */
+    --calculator-bg-dark: rgba(40, 42, 54, 0.65);
+    --calculator-border-dark: rgba(255, 255, 255, 0.1);
+    --button-bg-dark: rgba(68, 71, 90, 0.8);
+    --button-hover-bg-dark: rgba(80, 85, 108, 0.9);
+    --operator-bg-dark: rgba(255, 184, 108, 0.85);
+    --operator-text-dark: #1e1e1e;
+    --operator-hover-bg-dark: rgba(255, 160, 70, 0.9);
+    --equals-bg-dark: rgba(139, 233, 253, 0.85);
+    --equals-text-dark: #1e1e1e;
+    --equals-hover-bg-dark: rgba(100, 200, 220, 0.9);
+    --display-bg-dark: rgba(30, 31, 41, 0.7);
+    --display-border-dark: rgba(80, 80, 80, 0.7);
+    --shadow-dark: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --history-bg-dark: rgba(40, 42, 54, 0.7);
+    --history-text-dark: #bd93f9;
+    --history-item-hover-dark: rgba(90, 95, 120, 0.8);
+    --icon-color-dark: #f8f9fa;
+    --history-button-hover-dark: rgba(255,255,255,0.12);
+    --danger-bg-dark: rgba(255, 107, 107, 0.7);
+    --danger-hover-bg-dark: rgba(255, 80, 80, 0.8);
+    --danger-text-dark: #1e1e1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+body.light-mode {
+    background: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.dark-mode {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Styling for the new main title */
+.main-title {
+    font-size: 2rem; /* Adjust size as needed */
+    font-weight: 500;
+    margin-bottom: 25px; /* Space below the title */
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+body.light-mode .main-title {
+    color: var(--title-text-light);
+}
+
+body.dark-mode .main-title {
+    color: var(--title-text-dark);
+}
+
+
+.calculator {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+body.light-mode .calculator {
+    background-color: var(--calculator-bg-light);
+    border: 1px solid var(--calculator-border-light);
+    box-shadow: var(--shadow-light);
+}
+
+body.dark-mode .calculator {
+    background-color: var(--calculator-bg-dark);
+    border: 1px solid var(--calculator-border-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+body.light-mode .icon-button { color: var(--icon-color-light); }
+body.light-mode .icon-button:hover { background-color: var(--history-button-hover-light); }
+body.dark-mode .icon-button { color: var(--icon-color-dark); }
+body.dark-mode .icon-button:hover { background-color: var(--history-button-hover-dark); }
+
+
+.display {
+    width: 100%;
+    min-height: 90px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    word-wrap: break-word;
+    word-break: break-all;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+body.light-mode .display {
+    background-color: var(--display-bg-light);
+    color: var(--text-light);
+    border: 1px solid var(--display-border-light);
+}
+
+body.dark-mode .display {
+    background-color: var(--display-bg-dark);
+    color: var(--text-dark);
+    border: 1px solid var(--display-border-dark);
+}
+
+.calculation-line {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    min-height: 18px;
+    width: 100%;
+    text-align: right;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    color: currentColor;
+}
+.calculation-line::-webkit-scrollbar { height: 3px; }
+body.light-mode .calculation-line::-webkit-scrollbar-thumb { background-color: #bbb; border-radius: 3px; }
+body.dark-mode .calculation-line::-webkit-scrollbar-thumb { background-color: #555; border-radius: 3px; }
+
+
+.current-operand {
+    font-size: 2rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: right;
+    color: currentColor;
+    line-height: 1.2;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 16px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    font-weight: 500;
+}
+
+.buttons button:active { transform: scale(0.95); }
+
+body.light-mode .buttons button {
+    background-color: var(--button-bg-light);
+    color: var(--text-light);
+}
+body.light-mode .buttons button:hover { background-color: var(--button-hover-bg-light); }
+
+body.dark-mode .buttons button {
+    background-color: var(--button-bg-dark);
+    color: var(--text-dark);
+}
+body.dark-mode .buttons button:hover { background-color: var(--button-hover-bg-dark); }
+
+.buttons .span-two { grid-column: span 2; }
+.buttons .operator-btn, .buttons .equals-btn { font-weight: 700; }
+
+body.light-mode .buttons .operator-btn {
+    background-color: var(--operator-bg-light);
+    color: var(--operator-text-light);
+}
+body.light-mode .buttons .operator-btn:hover { background-color: var(--operator-hover-bg-light); }
+
+body.dark-mode .buttons .operator-btn {
+    background-color: var(--operator-bg-dark);
+    color: var(--operator-text-dark);
+}
+body.dark-mode .buttons .operator-btn:hover { background-color: var(--operator-hover-bg-dark); }
+
+body.light-mode .buttons .equals-btn {
+    background-color: var(--equals-bg-light);
+    color: var(--equals-text-light);
+}
+body.light-mode .buttons .equals-btn:hover { background-color: var(--equals-hover-bg-light); }
+
+body.dark-mode .buttons .equals-btn {
+    background-color: var(--equals-bg-dark);
+    color: var(--equals-text-dark);
+}
+body.dark-mode .buttons .equals-btn:hover { background-color: var(--equals-hover-bg-dark); }
+
+body.light-mode .feather-moon { display: none !important; }
+body.light-mode .feather-sun { display: block !important; }
+body.dark-mode .feather-sun { display: none !important; }
+body.dark-mode .feather-moon { display: block !important; }
+
+.history-panel-wrapper {
+    width: 100%;
+    max-width: 380px;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-in-out, margin-top 0.4s ease;
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+.history-panel-wrapper.visible {
+    max-height: 220px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.history-panel {
+    padding: 15px;
+    border-radius: 16px;
+    backdrop-filter: blur(5px) saturate(120%);
+    -webkit-backdrop-filter: blur(5px) saturate(120%);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+body.light-mode .history-panel {
+    background-color: var(--history-bg-light);
+    color: var(--history-text-light);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--calculator-border-light);
+}
+body.dark-mode .history-panel {
+    background-color: var(--history-bg-dark);
+    color: var(--history-text-dark);
+    box-shadow: var(--shadow-dark);
+    border: 1px solid var(--calculator-border-dark);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.history-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+#clear-history-button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+body.light-mode #clear-history-button {
+    background-color: var(--danger-bg-light);
+    color: var(--danger-text-light);
+}
+body.light-mode #clear-history-button:hover {
+    background-color: var(--danger-hover-bg-light);
+}
+body.dark-mode #clear-history-button {
+    background-color: var(--danger-bg-dark);
+    color: var(--danger-text-dark);
+}
+body.dark-mode #clear-history-button:hover {
+    background-color: var(--danger-hover-bg-dark);
+}
+
+
+#history-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 160px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
+#history-list::-webkit-scrollbar { width: 6px; }
+#history-list::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 3px; }
+body.light-mode #history-list::-webkit-scrollbar-thumb { background-color: #aaa; border-radius: 3px; }
+body.dark-mode #history-list::-webkit-scrollbar-thumb { background-color: #666; border-radius: 3px; }
+
+#history-list li {
+    padding: 7px 5px;
+    border-bottom: 1px dashed var(--display-border-light);
+    text-align: right;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+body.dark-mode #history-list li { border-bottom: 1px dashed var(--display-border-dark); }
+
+body.light-mode #history-list li:hover {
+    background-color: var(--history-item-hover-light);
+}
+body.dark-mode #history-list li:hover {
+    background-color: var(--history-item-hover-dark);
+}
+#history-list li:last-child { border-bottom: none; }
+
+
+@media (max-width: 420px) {
+    .main-title { /* Responsive title */
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    .calculator, .history-panel-wrapper { max-width: 96%; }
+    .calculator { padding: 15px; }
+    .buttons button { padding: 14px; font-size: 1.1rem; }
+    .current-operand { font-size: 1.8rem; }
+    .calculation-line { font-size: 0.85rem; }
+    .display { min-height: 80px; padding: 8px 12px; }
+    .history-panel-wrapper.visible { max-height: 200px; }
+    #history-list { font-size: 0.85rem; max-height: 140px; }
+    .history-header h3 { font-size: 1rem; }
+    #clear-history-button { padding: 5px 8px; font-size: 0.75rem; }
+}
+
+3. ملف script.js (بدون تغيير):
+ملف script.js يبقى كما هو من التحديث السابق، حيث أنه لا يتأثر بإضافة عنصر HTML جديد أو تنسيقات CSS له.
+التغييرات الرئيسية:
+ * في index.html:
+   * تمت إضافة <h1 class="main-title">Calculator By Hassan</h1> مباشرة داخل <div class="container"> وقبل <div class="calculator">.
+ * في style.css:
+   * تمت إضافة متغيرات جديدة للألوان الخاصة بالعنوان الرئيسي في الوضع الفاتح والداكن:
+     * --title-text-light: #2c3e50;
+     * --title-text-dark: #ecf0f1;
+   * تمت إضافة كتلة CSS جديدة لتنسيق الفئة .main-title:
+     .main-title {
+    font-size: 2rem; /* Adjust size as needed */
+    font-weight: 500;
+    margin-bottom: 25px; /* Space below the title */
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+body.light-mode .main-title {
+    color: var(--title-text-light);
+}
+
+body.dark-mode .main-title {
+    color: var(--title-text-dark);
+}
